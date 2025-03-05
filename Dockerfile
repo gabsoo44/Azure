@@ -1,18 +1,13 @@
-# Utiliser une image légère de Python
-FROM python:3.9-slim
-
-# Définir le répertoire de travail
+# Étape 1 : Builder l’environnement avec toutes les dépendances
+FROM python:3.9-slim AS builder
 WORKDIR /app
-
-# Copier les fichiers de dépendances et les installer
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copier tout le projet dans le conteneur
+# Étape 2 : Créer l’image finale avec uniquement les fichiers nécessaires
+FROM python:3.9-slim
+WORKDIR /app
+COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 COPY . .
-
-# Exposer le port sur lequel Flask tourne
 EXPOSE 5000
-
-# Définir la commande pour démarrer l’application
 CMD ["python", "app.py"]
