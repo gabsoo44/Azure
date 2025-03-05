@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Plateforme de Diffusion</h1>
+    <button onclick="fetchData('/api/events')">Voir Événements</button>
+    <button onclick="fetchData('/api/news')">Voir Actualités</button>
+    <pre id="output"></pre>
+
+    <script>
+        function fetchData(endpoint) {
+            fetch(endpoint)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+                });
+        }
+    </script>
+</body>
+</html>
