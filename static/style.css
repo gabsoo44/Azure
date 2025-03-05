@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+pre {
+    text-align: left;
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
