@@ -1,1 +1,1 @@
-c'est un projet de cloud computing
+Ce projet utilise Flask, Docker et Kubernetes pour diffuser du contenu statique.
